@@ -12,7 +12,7 @@ class RouterWidget {
       ),
       GoRoute(
         path: '/login',
-        builder: (context, state) => const LoginUi(),
+        builder: (context, state) => LoginUi(),
       )
     ],
   );
