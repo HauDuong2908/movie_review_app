@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593573993806",
+    "project_id": "movie-review-fd36b",
+    "storage_bucket": "movie-review-fd36b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593573993806:android:eb02e06a0639df02bf121f",
+        "android_client_info": {
+          "package_name": "com.example.movie_review_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtPO4V66SK1GsIaG2YuSSpI55AZARws58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
