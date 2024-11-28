@@ -1,16 +1,32 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_review_app/Models/Constants.dart';
 import 'package:movie_review_app/Services/auth_service.dart';
-import 'package:movie_review_app/widgets/CustomButton.dart';
-import 'package:movie_review_app/widgets/widgets.dart';
+import '../widgets/widgets.dart';
+import 'package:movie_review_app/widgets/background-image.dart';
 
-class LoginUi extends StatelessWidget {
-  LoginUi({super.key});
+class SignUp extends StatefulWidget {
+  SignUp({super.key});
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  @override
+  State<SignUp> createState() => _SignUpPage();
+}
+
+class _SignUpPage extends State<SignUp> {
+  final AuthService _auth = AuthService();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +58,7 @@ class LoginUi extends StatelessWidget {
                   SizedBox(
                     width: size.width * 0.7,
                     child: Text(
-                      'Login',
+                      'Sign Up',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 24,
@@ -69,6 +85,21 @@ class LoginUi extends StatelessWidget {
                       children: [
                         TextField(
                           controller: _emailController,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            hintText: 'Email',
+                            filled: true,
+                            fillColor: Colors.grey[800],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintStyle: const TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.01),
+                        TextField(
+                          controller: _usernameController,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             hintText: 'User Name',
@@ -113,11 +144,7 @@ class LoginUi extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.02),
                   CustomButton(
-                    onTap: () async {
-                      // await AuthService().signUp(
-                      //     email: _emailController.text,
-                      //     password: _passwordController.text);
-                    },
+                    onTap: _signUp,
                     text: 'Login',
                     size: size,
                     height: 50,
@@ -163,5 +190,20 @@ class LoginUi extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _signUp() async {
+    // String username = _usernameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signUp(email, password);
+
+    if (user != null) {
+      print('đã tạo tài khoản thành công');
+      // context.go('/login');
+    } else {
+      print("Khởi tạo không thành công");
+    }
   }
 }

@@ -1,11 +1,21 @@
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_review_app/Models/Constants.dart';
-import 'package:movie_review_app/widgets/CustomButton.dart';
-import 'package:movie_review_app/widgets/background-image.dart';
+// import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+// import 'package:go_router/go_router.dart';
+import '../Models/Models.dart';
+// import '../Services/Authentications.dart';
+import '../widgets/widgets.dart';
+import '../Provider/Providers.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+// ignore: must_be_immutable
+class LoginUi extends StatelessWidget {
+  LoginUi({super.key});
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  final Loginprovider loginprovider = Loginprovider();
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +34,7 @@ class SignUp extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: size.height * 0.39,
-                  ),
+                  SizedBox(height: size.height * 0.39),
                   Center(
                     child: Image.asset(
                       'assets/Logo.png',
@@ -63,7 +71,7 @@ class SignUp extends StatelessWidget {
                     child: Column(
                       children: [
                         TextField(
-                          // controller: _emailController,
+                          controller: _emailController,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person),
                             hintText: 'User Name',
@@ -78,7 +86,7 @@ class SignUp extends StatelessWidget {
                         ),
                         SizedBox(height: size.height * 0.01),
                         TextField(
-                          // controller: _passwordController,
+                          controller: _passwordController,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.lock),
                             hintText: 'Password',
@@ -107,27 +115,31 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: size.height * 0.02),
-                  CustomButton(
-                    onTap: () async {
-                      // await AuthService().signUp(
-                      //     email: _emailController.text,
-                      //     password: _passwordController.text);
+                  Consumer<Loginprovider>(
+                    builder: (context, provider, child) {
+                      return CustomButton(
+                        onTap: () {
+                          String email = _emailController.text;
+                          String password = _passwordController.text;
+                          provider.signIn(email, password, context);
+                        },
+                        text: 'Login',
+                        size: size,
+                        height: 50,
+                        width: 0.4,
+                        color: constants.pink.withOpacity(1),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(40)),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        fontFamily: 'Open Sans',
+                        textColor: Colors.black,
+                      );
                     },
-                    text: 'Login',
-                    size: size,
-                    height: 50,
-                    width: 0.4,
-                    color: constants.pink.withOpacity(1),
-                    borderRadius: const BorderRadius.all(Radius.circular(40)),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    fontFamily: 'Open Sans',
-                    textColor: Colors.black,
                   ),
                   SizedBox(height: size.height * 0.02),
                   GestureDetector(
-                    onTap: () => print(
-                        'Sign Up tapped!'), // Thay thế hàm này bằng logic của bạn
+                    onTap: () => print('Sign Up tapped!'),
                     child: RichText(
                       text: TextSpan(
                         text: "Don't have an account? ",
