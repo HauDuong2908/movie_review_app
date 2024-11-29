@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import '../Services/Authentications.dart';
 
-class Loginprovider extends ChangeNotifier {
+class Providerwithloginandregister extends ChangeNotifier {
   bool _isLoggedIn = false;
   bool get isLoggedIn => _isLoggedIn;
 
