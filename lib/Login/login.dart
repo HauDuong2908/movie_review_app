@@ -146,7 +146,7 @@ class LoginUi extends StatelessWidget {
                         style: TextStyle(color: Colors.pink[100]),
                         children: [
                           TextSpan(
-                            text: 'Sign Up',
+                            text: 'Login',
                             style: const TextStyle(
                               color: Color.fromARGB(255, 122, 81, 103),
                             ),
