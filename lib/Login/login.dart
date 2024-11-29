@@ -1,21 +1,22 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_review_app/Provider/providerWithLoginAndRegister.dart';
 import 'package:provider/provider.dart';
-// import 'package:go_router/go_router.dart';
+
 import '../Models/Models.dart';
-// import '../Services/Authentications.dart';
-import '../widgets/widgets.dart';
 import '../Provider/Providers.dart';
+import '../widgets/widgets.dart';
 
 // ignore: must_be_immutable
 class LoginUi extends StatelessWidget {
   LoginUi({super.key});
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  final Loginprovider loginprovider = Loginprovider();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final Providerwithloginandregister loginprovider =
+      Providerwithloginandregister();
 
   @override
   Widget build(BuildContext context) {
@@ -34,76 +35,68 @@ class LoginUi extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: size.height * 0.39),
+                  Size_box(size: size, heightSize: 0.38),
                   Center(
                     child: Image.asset(
                       'assets/Logo.png',
-                      width: size.width * 0.3,
+                      width: size.width * 0.4,
                     ),
                   ),
-                  SizedBox(height: size.height * 0.02),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Login',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: constants.white.withOpacity(0.8),
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                  Size_box(size: size, heightSize: 0.02),
+                  title_box(
+                    size: size,
+                    constants: constants,
+                    textTitle: 'Login',
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: constants.white.withOpacity(0.8),
+                    widthSize: 0.7,
                   ),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Please sign in to continue.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: constants.white.withOpacity(0.8),
-                      ),
-                    ),
+                  title_box(
+                    size: size,
+                    constants: constants,
+                    textTitle: 'Please sign in to continue.',
+                    fontSize: 13,
+                    fontWeight: null,
+                    color: constants.white.withOpacity(0.8),
+                    widthSize: 0.7,
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  Size_box(size: size, heightSize: 0.02),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       children: [
-                        TextField(
+                        textFieldWidget(
                           controller: _emailController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
-                            hintText: 'User Name',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Icon(Icons.person_2),
+                          text: 'User Name',
+                          filled: true,
+                          color: (Colors.grey[800])!,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: const BorderSide(color: Colors.blue),
                           ),
+                          hintText: const TextStyle(color: Colors.grey),
+                          obscureText: false,
                         ),
-                        SizedBox(height: size.height * 0.01),
-                        TextField(
+                        Size_box(size: size, heightSize: 0.03),
+                        textFieldWidget(
                           controller: _passwordController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            hintText: 'Password',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Icon(Icons.lock),
+                          text: 'Password',
+                          filled: true,
+                          color: (Colors.grey[800])!,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: const BorderSide(color: Colors.blue),
                           ),
+                          hintText: const TextStyle(color: Colors.grey),
                           obscureText: true,
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: size.height * 0.01),
+                  Size_box(size: size, heightSize: 0.01),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -114,8 +107,8 @@ class LoginUi extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.02),
-                  Consumer<Loginprovider>(
+                  Size_box(size: size, heightSize: 0.01),
+                  Consumer<Providerwithloginandregister>(
                     builder: (context, provider, child) {
                       return CustomButton(
                         onTap: () {
@@ -130,29 +123,29 @@ class LoginUi extends StatelessWidget {
                         color: constants.pink.withOpacity(1),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(40)),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
                         fontFamily: 'Open Sans',
                         textColor: Colors.black,
                       );
                     },
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  Size_box(size: size, heightSize: 0.02),
                   GestureDetector(
-                    onTap: () => print('Sign Up tapped!'),
+                    // onTap: () => print('Sign Up tapped!'),
                     child: RichText(
                       text: TextSpan(
                         text: "Don't have an account? ",
                         style: TextStyle(color: Colors.pink[100]),
                         children: [
                           TextSpan(
-                            text: 'Login',
+                            text: 'Sign Up',
                             style: const TextStyle(
                               color: Color.fromARGB(255, 122, 81, 103),
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                print('Sign Up tapped!');
+                                context.go('/signup');
                               },
                           ),
                           TextSpan(

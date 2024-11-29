@@ -158,8 +158,7 @@ class _SignUpPage extends State<SignUp> {
                   ),
                   SizedBox(height: size.height * 0.02),
                   GestureDetector(
-                    onTap: () => print(
-                        'Sign Up tapped!'), // Thay thế hàm này bằng logic của bạn
+                    onTap: () => print('Sign Up tapped!'),
                     child: RichText(
                       text: TextSpan(
                         text: "Don't have an account? ",
