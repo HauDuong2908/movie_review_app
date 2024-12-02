@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:movie_review_app/Get_Started/Main_Started.dart';
-import 'package:movie_review_app/Login/home_page.dart';
+import 'package:movie_review_app/Screen/home/home.dart';
 import 'package:movie_review_app/Login/login.dart';
 import 'package:movie_review_app/Login/registered.dart';
 
@@ -22,7 +22,7 @@ class RouterWidget {
       ),
       GoRoute(
         path: '/homepage',
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => Home(),
       )
     ],
   );
