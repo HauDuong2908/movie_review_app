@@ -53,15 +53,6 @@ class Started extends StatelessWidget {
                 CustomButton(
                   onTap: () => context.go('/login'),
                   text: 'Get Started',
-                  size: size,
-                  height: 50,
-                  width: 0.4,
-                  color: constants.pink.withOpacity(1),
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                  fontFamily: 'Open Sans',
-                  textColor: Colors.black,
                 )
               ],
             ),

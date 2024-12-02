@@ -1,21 +1,18 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-// import 'package:go_router/go_router.dart';
+
 import '../Models/Models.dart';
-// import '../Services/Authentications.dart';
-import '../widgets/widgets.dart';
 import '../Provider/Providers.dart';
+import '../widgets/widgets.dart';
 
 // ignore: must_be_immutable
 class LoginUi extends StatelessWidget {
   LoginUi({super.key});
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  final Loginprovider loginprovider = Loginprovider();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,63 +39,32 @@ class LoginUi extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: size.height * 0.02),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Login',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: constants.white.withOpacity(0.8),
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                  const textTilte(
+                    text: 'Login',
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
                   ),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Please sign in to continue.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: constants.white.withOpacity(0.8),
-                      ),
-                    ),
+                  const textTilte(
+                    text: 'Please sign in to continue.',
+                    fontSize: 13,
                   ),
                   SizedBox(height: size.height * 0.02),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       children: [
-                        TextField(
+                        textField(
                           controller: _emailController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
-                            hintText: 'User Name',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                          ),
+                          icon: const Icon(Icons.email),
+                          hintText: 'Email',
+                          obText: false,
                         ),
-                        SizedBox(height: size.height * 0.01),
-                        TextField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            hintText: 'Password',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                          ),
-                          obscureText: true,
+                        SizedBox(height: size.height * 0.02),
+                        textField(
+                          controller: _emailController,
+                          icon: const Icon(Icons.lock),
+                          hintText: 'Password',
+                          obText: true,
                         ),
                       ],
                     ),
@@ -114,8 +80,8 @@ class LoginUi extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.02),
-                  Consumer<Loginprovider>(
+                  SizedBox(height: size.height * 0.01),
+                  Consumer<Logprovider>(
                     builder: (context, provider, child) {
                       return CustomButton(
                         onTap: () {
@@ -124,45 +90,17 @@ class LoginUi extends StatelessWidget {
                           provider.signIn(email, password, context);
                         },
                         text: 'Login',
-                        size: size,
-                        height: 50,
-                        width: 0.4,
-                        color: constants.pink.withOpacity(1),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(40)),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        fontFamily: 'Open Sans',
-                        textColor: Colors.black,
                       );
                     },
                   ),
                   SizedBox(height: size.height * 0.02),
                   GestureDetector(
-                    onTap: () => print('Sign Up tapped!'),
-                    child: RichText(
-                      text: TextSpan(
-                        text: "Don't have an account? ",
-                        style: TextStyle(color: Colors.pink[100]),
-                        children: [
-                          TextSpan(
-                            text: 'Sign Up',
-                            style: const TextStyle(
-                              color: Color.fromARGB(255, 122, 81, 103),
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                print('Sign Up tapped!');
-                              },
-                          ),
-                          TextSpan(
-                            text: ' first.',
-                            style: TextStyle(color: Colors.pink[100]),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                      child: richText(
+                    text: 'Don’t have an account? Please ',
+                    tapText: 'Sign Up ',
+                    onTap: () => context.go('/signup'),
+                    text1: 'first.',
+                  )),
                 ],
               ),
             ),

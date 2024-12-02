@@ -1,32 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_review_app/Models/Constants.dart';
-import 'package:movie_review_app/Services/auth_service.dart';
-import '../widgets/widgets.dart';
-import 'package:movie_review_app/widgets/background-image.dart';
+import 'package:provider/provider.dart';
 
-class SignUp extends StatefulWidget {
+import '../Models/Models.dart';
+import '../Provider/Providers.dart';
+import '../widgets/widgets.dart';
+
+class SignUp extends StatelessWidget {
   SignUp({super.key});
 
-  @override
-  State<SignUp> createState() => _SignUpPage();
-}
-
-class _SignUpPage extends State<SignUp> {
-  final AuthService _auth = AuthService();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,132 +41,71 @@ class _SignUpPage extends State<SignUp> {
                     ),
                   ),
                   SizedBox(height: size.height * 0.02),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Sign Up',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: constants.white.withOpacity(0.8),
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                  const textTilte(
+                    text: 'Sign Up',
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
                   ),
-                  SizedBox(
-                    width: size.width * 0.7,
-                    child: Text(
-                      'Please sign in to continue.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: constants.white.withOpacity(0.8),
-                      ),
-                    ),
+                  const textTilte(
+                    text: 'Create an account to continue.',
+                    fontSize: 13,
                   ),
                   SizedBox(height: size.height * 0.02),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       children: [
-                        TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
-                            hintText: 'Email',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        SizedBox(height: size.height * 0.01),
-                        TextField(
+                        textField(
                           controller: _usernameController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
-                            hintText: 'User Name',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                          ),
+                          icon: const Icon(Icons.person_2),
+                          hintText: 'User Name',
+                          obText: false,
                         ),
-                        SizedBox(height: size.height * 0.01),
-                        TextField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
+                        SizedBox(height: size.height * 0.02),
+                        textField(
+                          controller: _emailController,
+                          icon: const Icon(Icons.email),
+                          hintText: 'Email',
+                          obText: false,
+                        ),
+                        SizedBox(height: size.height * 0.02),
+                        textField(
+                            controller: _passwordController,
+                            icon: const Icon(Icons.password),
                             hintText: 'Password',
-                            filled: true,
-                            fillColor: Colors.grey[800],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(40),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                          ),
-                          obscureText: true,
-                        ),
+                            obText: true)
                       ],
                     ),
                   ),
-                  SizedBox(height: size.height * 0.01),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ),
-                  ),
                   SizedBox(height: size.height * 0.02),
-                  CustomButton(
-                    onTap: _signUp,
-                    text: 'Login',
-                    size: size,
-                    height: 50,
-                    width: 0.4,
-                    color: constants.pink.withOpacity(1),
-                    borderRadius: const BorderRadius.all(Radius.circular(40)),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    fontFamily: 'Open Sans',
-                    textColor: Colors.black,
+                  PopScope(
+                    canPop: false,
+                    // ignore: deprecated_member_use
+                    onPopInvoked: ((didpop) {
+                      if (didpop) {
+                        return;
+                      }
+                      context.go('/login');
+                    }),
+                    child: Consumer<Logprovider>(
+                        builder: (context, provider, child) {
+                      return CustomButton(
+                        onTap: () {
+                          String email = _emailController.text;
+                          String password = _passwordController.text;
+                          String username = _usernameController.text;
+                          provider.signUp(username, email, password, context);
+                        },
+                        text: 'Login',
+                      );
+                    }),
                   ),
                   SizedBox(height: size.height * 0.02),
                   GestureDetector(
-                    onTap: () => print(
-                        'Sign Up tapped!'), // Thay thế hàm này bằng logic của bạn
-                    child: RichText(
-                      text: TextSpan(
-                        text: "Don't have an account? ",
-                        style: TextStyle(color: Colors.pink[100]),
-                        children: [
-                          TextSpan(
-                            text: 'Sign Up',
-                            style: const TextStyle(
-                              color: Color.fromARGB(255, 122, 81, 103),
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                print('Sign Up tapped!');
-                              },
-                          ),
-                          TextSpan(
-                            text: ' first.',
-                            style: TextStyle(color: Colors.pink[100]),
-                          ),
-                        ],
-                      ),
+                    child: richText(
+                      text: 'Already have an account? Go to the ',
+                      tapText: 'Login Page.',
+                      onTap: () => context.go('/login'),
                     ),
                   ),
                 ],
@@ -190,20 +115,5 @@ class _SignUpPage extends State<SignUp> {
         ),
       ),
     );
-  }
-
-  void _signUp() async {
-    // String username = _usernameController.text;
-    String email = _emailController.text;
-    String password = _passwordController.text;
-
-    User? user = await _auth.signUp(email, password);
-
-    if (user != null) {
-      print('đã tạo tài khoản thành công');
-      // context.go('/login');
-    } else {
-      print("Khởi tạo không thành công");
-    }
   }
 }
