@@ -1,2 +1,2 @@
 // ignore: file_names
-export 'providerWithLoginAndRegister.dart';
+export 'loginAndRegisterProvider.dart';

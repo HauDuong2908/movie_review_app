@@ -14,7 +14,7 @@ Future<void> main() async {
   );
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => Providerwithloginandregister()),
+      ChangeNotifierProvider(create: (_) => Logprovider()),
     ],
     child: MyApp(),
   ));
