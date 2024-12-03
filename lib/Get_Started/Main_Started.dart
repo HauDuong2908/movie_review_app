@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../widgets/CustomButton.dart';
 import '../widgets/widgets.dart';
 import '../Models/Constants.dart';
 
@@ -51,7 +50,7 @@ class Started extends StatelessWidget {
                 ),
                 const SizedBox(height: 45),
                 CustomButton(
-                  onTap: () => context.go('/login'),
+                  onTap: () => context.go('/homepage'),
                   text: 'Get Started',
                 )
               ],

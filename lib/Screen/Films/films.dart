@@ -5,6 +5,21 @@ class Films extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Films'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Films',
+              style: TextStyle(fontSize: 40),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

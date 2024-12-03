@@ -10,6 +10,21 @@ class Watchlist extends StatefulWidget {
 class _WatchlistState extends State<Watchlist> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Watchlist'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'WatchList',
+              style: TextStyle(fontSize: 40),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -10,6 +10,21 @@ class Lists extends StatefulWidget {
 class _ListsState extends State<Lists> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lists'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Lists',
+              style: TextStyle(fontSize: 40),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
