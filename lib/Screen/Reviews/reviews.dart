@@ -10,6 +10,21 @@ class Reviews extends StatefulWidget {
 class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Reviews'),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Reviews',
+              style: TextStyle(fontSize: 40),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

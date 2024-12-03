@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:movie_review_app/Models/Models.dart';
 
-class Diary extends StatefulWidget {
+import '../drawer/slideMenu.dart';
+
+class Diary extends StatelessWidget {
   const Diary({super.key});
 
   @override
-  State<Diary> createState() => _DiaryState();
-}
-
-class _DiaryState extends State<Diary> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    Constants constants = Constants();
+    return Scaffold(
+      drawer: SlideMenu(),
+      appBar: AppBar(
+        title: const Text(
+          'Diary',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: constants.black.withOpacity(1),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Diary',
+              style: TextStyle(fontSize: 40),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
