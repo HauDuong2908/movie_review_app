@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../Models/Models.dart';
+import '../../widgets/widgets.dart';
+import '../drawer/slideMenu.dart';
+
 class Lists extends StatefulWidget {
   const Lists({super.key});
 
@@ -10,9 +14,13 @@ class Lists extends StatefulWidget {
 class _ListsState extends State<Lists> {
   @override
   Widget build(BuildContext context) {
+    Constants constants = Constants();
     return Scaffold(
+      drawer: SlideMenu(),
       appBar: AppBar(
-        title: Text('Lists'),
+        title: Text('Home'),
+        leading: IconDrawer(),
+        backgroundColor: constants.black.withOpacity(1),
       ),
       body: const Center(
         child: Column(

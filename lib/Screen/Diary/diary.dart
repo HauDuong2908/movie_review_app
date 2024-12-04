@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_review_app/Models/Models.dart';
 
+import '../../widgets/widgets.dart';
 import '../drawer/slideMenu.dart';
 
 class Diary extends StatelessWidget {
@@ -9,24 +10,27 @@ class Diary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Constants constants = Constants();
-    return Scaffold(
-      drawer: SlideMenu(),
-      appBar: AppBar(
-        title: const Text(
-          'Diary',
-          style: TextStyle(color: Colors.white),
+    return MaterialApp(
+      home: Scaffold(
+        drawer: SlideMenu(),
+        appBar: AppBar(
+          leading: IconDrawer(),
+          title: const Text(
+            'Diary',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: constants.black.withOpacity(1),
         ),
-        backgroundColor: constants.black.withOpacity(1),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Diary',
-              style: TextStyle(fontSize: 40),
-            )
-          ],
+        body: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Diary',
+                style: TextStyle(fontSize: 40),
+              )
+            ],
+          ),
         ),
       ),
     );
