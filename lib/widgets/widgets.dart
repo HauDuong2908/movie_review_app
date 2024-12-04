@@ -5,3 +5,4 @@ export 'richText.dart';
 export 'textTilte.dart';
 export 'FollowInfo.dart';
 export 'MenuItem.dart';
+export 'IconDrawer.dart';

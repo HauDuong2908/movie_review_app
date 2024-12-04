@@ -1,10 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:movie_review_app/Get_Started/Main_Started.dart';
-import 'package:movie_review_app/Screen/Diary/diary.dart';
-import 'package:movie_review_app/Screen/Watchlist/watchlist.dart';
-import 'package:movie_review_app/Screen/home/home.dart';
 import 'package:movie_review_app/Login/login.dart';
 import 'package:movie_review_app/Login/registered.dart';
+import 'Screen/Screen.dart';
 
 class RouterWidget {
   static final GoRouter router = GoRouter(
@@ -27,12 +25,28 @@ class RouterWidget {
         builder: (context, state) => Home(),
       ),
       GoRoute(
+        path: '/films',
+        builder: (context, state) => Films(),
+      ),
+      GoRoute(
         path: '/diary',
         builder: (context, state) => Diary(),
       ),
       GoRoute(
+        path: '/reviews',
+        builder: (context, state) => Reviews(),
+      ),
+      GoRoute(
         path: '/watchList',
         builder: (context, state) => Watchlist(),
+      ),
+      GoRoute(
+        path: '/lists',
+        builder: (context, state) => Lists(),
+      ),
+      GoRoute(
+        path: '/likes',
+        builder: (context, state) => Likes(),
       ),
     ],
   );

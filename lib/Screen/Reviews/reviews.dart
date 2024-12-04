@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../Models/Models.dart';
+import '../../widgets/widgets.dart';
+import '../drawer/slideMenu.dart';
+
 class Reviews extends StatefulWidget {
   const Reviews({super.key});
 
@@ -10,9 +14,13 @@ class Reviews extends StatefulWidget {
 class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
+    Constants constants = Constants();
     return Scaffold(
+      drawer: SlideMenu(),
       appBar: AppBar(
-        title: Text('Reviews'),
+        title: Text('Home'),
+        leading: IconDrawer(),
+        backgroundColor: constants.black.withOpacity(1),
       ),
       body: const Center(
         child: Column(
