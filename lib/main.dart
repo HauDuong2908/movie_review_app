@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:movie_review_app/Firebase/firebase_options.dart';
 import 'package:movie_review_app/Router.dart';
+import 'package:flutter/services.dart';
 
 import '../Provider/Providers.dart';
 
@@ -12,12 +13,17 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => Logprovider()),
-    ],
-    child: MyApp(),
-  ));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Logprovider()),
+      ],
+      child: MyApp(),
+    ));
+  });
 }
 
 class MyApp extends StatelessWidget {

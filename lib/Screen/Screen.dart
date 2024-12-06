@@ -4,4 +4,4 @@ export 'Likes/likes.dart';
 export 'Lists/lists.dart';
 export 'Reviews/reviews.dart';
 export 'Watchlist/watchlist.dart';
-export 'home/home.dart';
+export 'home/home_ui/home.dart';
