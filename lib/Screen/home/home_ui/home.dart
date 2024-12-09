@@ -40,65 +40,105 @@ class Home extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Tilte_Home(),
-                SizedBox(height: size.height * 0.02),
-                Text(
-                  'Popular Films This Month',
-                  style: TextStyle(fontSize: 14, color: constants.white),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 80,
+                child: Column(
+                  children: [
+                    Tilte_Home(),
+                  ],
                 ),
-                SizedBox(height: size.height * 0.02),
-                List_View(),
-                Text(
-                  'Popular Films This Month',
-                  style: TextStyle(fontSize: 14, color: constants.white),
-                ),
-                SizedBox(
-                  height: size.height * 0.9,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ListView.builder(
-                      itemCount: Customlistview().movies.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        final movie = Customlistview().movies[index];
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  height: size.height * 0.35,
-                                  width: size.width * 0.6,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: constants.white),
-                                  child: Buildcard(
-                                    title: movie['title'],
-                                    author: movie['author'],
-                                    imagePath: movie['image'],
-                                    likes: movie['likes'],
-                                    comments: movie['comments'],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+              ),
+              SizedBox(
+                height: size.height * 0.25,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Popular Films This Month',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: constants.white,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
+                    const Expanded(
+                      child: List_View(),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: size.height * 0.41,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Popular Films This Month',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: constants.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Listview_Stack(),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Recent Friends Is Review',
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: constants.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Flexible(
+                      child: SizedBox(
+                        height: size.height * 0.8,
+                        child: ListView.builder(
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Container(
+                                      height: size.height * 0.2,
+                                      width: size.width * 1,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: constants.gray),
+                                      child: Column(
+                                        children: [],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            }),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
