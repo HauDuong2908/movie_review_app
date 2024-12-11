@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../../Models/Models.dart';
+import '../../../../Models/Models.dart';
 
 class Buildcard extends StatelessWidget {
   const Buildcard({
@@ -57,7 +57,6 @@ class Buildcard extends StatelessWidget {
               ],
             ),
           ),
-          // const SizedBox(height: 16.0),
           Text(
             title,
             style: TextStyle(
@@ -66,13 +65,12 @@ class Buildcard extends StatelessWidget {
               color: constants.pink,
             ),
           ),
-          // const SizedBox(height: 8.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                backgroundColor: Colors.grey[300],
+                backgroundColor: constants.white,
                 radius: 14.0,
                 child: Text(
                   author[0],
@@ -98,24 +96,6 @@ class Buildcard extends StatelessWidget {
                 comments.toString(),
                 style: TextStyle(color: constants.white, fontSize: 12),
               ),
-              // Row(
-              //   children: [
-              //     const Icon(Icons.favorite, color: Colors.red, size: 14.0),
-              //     // SizedBox(width: size.width * 0.01),
-              //     Text(
-              //       likes.toString(),
-              //       style: const TextStyle(color: Colors.black87, fontSize: 10),
-              //     ),
-              //     // SizedBox(width: size.width * 0.11),
-              //     const Icon(Icons.comment, color: Colors.grey, size: 12.0),
-              //     // SizedBox(width: size.width * 0.01),
-              //     Text(
-              //       comments.toString(),
-              //       style: const TextStyle(color: Colors.black87, fontSize: 12),
-              //     ),
-              //     // SizedBox(width: size.width * 0.05),
-              //   ],
-              // ),
             ],
           ),
         ],
