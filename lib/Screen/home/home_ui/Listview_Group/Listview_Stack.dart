@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Models/Models.dart';
-import '../main_home.dart';
+import '../../../../Models/Models.dart';
+import '../../main_home.dart';
 
 class Listview_Stack extends StatelessWidget {
   const Listview_Stack({
