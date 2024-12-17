@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../Models/Models.dart';
 import '../../main_home.dart';
 
@@ -9,38 +8,26 @@ class listviewReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     Constants constants = Constants();
-    return SizedBox(
-      height: size.height * 0.8,
-      child: ListView.builder(
-          itemCount: Reviewjson().reviews.length,
-          itemBuilder: (context, index) {
-            final Map<String, dynamic> review = Reviewjson().reviews[index];
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Container(
-                    height: size.height * 0.2,
-                    width: size.width * 1,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: constants.gray),
-                    child: BuildcardReview(
-                      imageProfile: review['imageProfile'],
-                      nameFilm: review['name'],
-                      nameUser: review['tagFriends'],
-                      comments: review['comments'],
-                      textReview: review['textReview'],
-                      imageMovies: review['imageMovies'],
-                    ),
-                  ),
-                )
-              ],
-            );
-          }),
+    final List<Map<String, dynamic>> review = Reviewjson().reviews;
+    return Column(
+      children: review.map((listview) {
+        return Card(
+          color: constants.black.withOpacity(0.5),
+          margin: EdgeInsets.symmetric(vertical: 8),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: BuildcardReview(
+              imageProfile: listview['imageProfile'],
+              nameFilm: listview['name'],
+              nameUser: listview['tagFriends'],
+              comments: listview['comments'],
+              textReview: listview['textReview'],
+              imageMovies: listview['imageMovies'],
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }

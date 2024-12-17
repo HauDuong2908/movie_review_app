@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../Models/Models.dart';
 import '../../main_home.dart';
 
 class Listview_Stack extends StatelessWidget {
@@ -10,11 +8,10 @@ class Listview_Stack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    Constants constants = Constants();
     return SizedBox(
-      height: size.height * 0.9,
+      height: 150,
       child: ListView.builder(
+        shrinkWrap: true,
         itemCount: Customlistview().movies.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -27,11 +24,10 @@ class Listview_Stack extends StatelessWidget {
                 child: InkWell(
                   onTap: () {},
                   child: Container(
-                    height: size.height * 0.35,
-                    width: size.width * 0.46,
+                    width: 86,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: constants.black.withOpacity(1)),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     child: Buildcard(
                       title: movie['title'],
                       author: movie['author'],

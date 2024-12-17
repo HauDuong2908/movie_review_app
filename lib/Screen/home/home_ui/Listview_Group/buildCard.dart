@@ -21,7 +21,6 @@ class Buildcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     Constants constants = Constants();
     List<String> imagesToShow = imagePath.take(4).toList();
     return Container(
@@ -34,15 +33,14 @@ class Buildcard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 160.0,
+            height: 82,
             child: Stack(
               children: [
                 for (int i = imagesToShow.length - 1; i >= 0; i--)
                   Positioned(
-                    left: i * 20.0,
+                    left: i * 10.0,
                     child: SizedBox(
-                      width: 115.0,
-                      height: 160.0,
+                      width: 58.0,
                       child: Container(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16.0),
@@ -61,7 +59,7 @@ class Buildcard extends StatelessWidget {
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20.0,
+              fontSize: 10.0,
               color: constants.pink,
             ),
           ),
@@ -71,7 +69,7 @@ class Buildcard extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: constants.white,
-                radius: 14.0,
+                radius: 10.0,
                 child: Text(
                   author[0],
                   style: TextStyle(color: constants.pink),
@@ -80,21 +78,21 @@ class Buildcard extends StatelessWidget {
               const SizedBox(width: 5.0),
               Text(
                 author,
-                style: TextStyle(color: constants.pink, fontSize: 14),
+                style: TextStyle(color: constants.pink, fontSize: 6),
               ),
-              SizedBox(width: size.width * 0.02),
-              const Icon(Icons.favorite, color: Colors.red, size: 14.0),
-              SizedBox(width: size.width * 0.01),
+              SizedBox(width: 2),
+              const Icon(Icons.favorite, color: Colors.red, size: 6),
+              SizedBox(width: 2),
               Text(
                 likes.toString(),
-                style: TextStyle(color: constants.white, fontSize: 10),
+                style: TextStyle(color: constants.white, fontSize: 4),
               ),
-              SizedBox(width: size.width * 0.02),
-              const Icon(Icons.comment, color: Colors.grey, size: 12.0),
-              SizedBox(width: size.width * 0.01),
+              SizedBox(width: 2),
+              const Icon(Icons.comment, color: Colors.grey, size: 4),
+              SizedBox(width: 1),
               Text(
                 comments.toString(),
-                style: TextStyle(color: constants.white, fontSize: 12),
+                style: TextStyle(color: constants.white, fontSize: 4),
               ),
             ],
           ),
