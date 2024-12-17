@@ -37,5 +37,41 @@ class Customlistview {
       'likes': 532,
       'comments': 78,
     },
+    {
+      'title': 'Comfort Movies To Watch',
+      'author': 'Ruth',
+      'image': [
+        'assets/film/image33.png',
+        'assets/film/image34.png',
+        'assets/film/image35.png',
+        'assets/film/image36.png'
+      ],
+      'likes': 532,
+      'comments': 78,
+    },
+    {
+      'title': 'Comfort Movies To Watch',
+      'author': 'Ruth',
+      'image': [
+        'assets/film/image33.png',
+        'assets/film/image34.png',
+        'assets/film/image35.png',
+        'assets/film/image36.png'
+      ],
+      'likes': 532,
+      'comments': 78,
+    },
+    {
+      'title': 'Comfort Movies To Watch',
+      'author': 'Ruth',
+      'image': [
+        'assets/film/image33.png',
+        'assets/film/image34.png',
+        'assets/film/image35.png',
+        'assets/film/image36.png'
+      ],
+      'likes': 532,
+      'comments': 78,
+    },
   ];
 }

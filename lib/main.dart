@@ -21,7 +21,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => Logprovider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ));
   });
 }

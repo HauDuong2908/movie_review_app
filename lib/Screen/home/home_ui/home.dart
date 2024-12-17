@@ -10,7 +10,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Constants constants = Constants();
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: constants.black.withOpacity(1),
       drawer: SlideMenu(),
@@ -23,7 +22,6 @@ class Home extends StatelessWidget {
         elevation: 0.0,
         title: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          width: size.width,
           child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -40,79 +38,65 @@ class Home extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          padding: EdgeInsets.symmetric(horizontal: 15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 80,
-                child: Column(
-                  children: [
-                    Tilte_Home(),
-                  ],
-                ),
+              const Tilte_Home(),
+              Text(
+                'Popular Films This Month',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: constants.white,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: size.height * 0.25,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Popular Films This Month',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: constants.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Expanded(
-                      child: List_View(),
-                    ),
-                  ],
+                height: 82,
+                child: SizedBox(
+                  child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                              width: 58,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: constants.white),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          )
+                        ],
+                      );
+                    },
+                    shrinkWrap: true,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.41,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Popular Films This Month',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: constants.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Listview_Stack(),
-                    ),
-                  ],
-                ),
+              Text(
+                'Popular Films This Month',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: constants.white,
+                    fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                height: size.height * 0.5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Recent Friends Is Review',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: constants.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Flexible(
-                      child: listviewReview(),
-                    )
-                  ],
-                ),
-              )
+              const Listview_Stack(),
+              Text(
+                'Recent Friends Is Review',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: constants.white,
+                    fontWeight: FontWeight.bold),
+              ),
+              const listviewReview()
             ],
           ),
         ),
