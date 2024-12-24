@@ -3,8 +3,8 @@ import '../../../../Models/Models.dart';
 import '../../main_home.dart';
 
 // ignore: camel_case_types
-class listviewReview extends StatelessWidget {
-  const listviewReview({super.key});
+class FriendsReview extends StatelessWidget {
+  const FriendsReview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,10 @@ class listviewReview extends StatelessWidget {
       children: review.map((listview) {
         return Card(
           color: constants.black.withOpacity(0.5),
-          margin: EdgeInsets.symmetric(vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: 8),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: BuildcardReview(
+            child: Friendbuildcard(
               imageProfile: listview['imageProfile'],
               nameFilm: listview['name'],
               nameUser: listview['tagFriends'],

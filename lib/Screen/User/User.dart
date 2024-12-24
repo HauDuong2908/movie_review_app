@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movie_review_app/Models/Models.dart';
 
+import '../../Models/Models.dart';
 import '../../widgets/widgets.dart';
 import '../drawer/slideMenu.dart';
+// import '../Nav_bar/navBar.dart';
 
-class Diary extends StatelessWidget {
-  const Diary({super.key});
+class User extends StatelessWidget {
+  const User({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,8 @@ class Diary extends StatelessWidget {
             ],
           ),
         ),
+        extendBody: true,
+        // bottomNavigationBar: Navbar(),
       ),
     );
   }

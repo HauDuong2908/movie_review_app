@@ -4,8 +4,8 @@ import 'package:readmore/readmore.dart';
 
 import '../../../../Models/Models.dart';
 
-class BuildcardReview extends StatelessWidget {
-  const BuildcardReview({
+class Friendbuildcard extends StatelessWidget {
+  const Friendbuildcard({
     super.key,
     required this.imageProfile,
     required this.nameFilm,
@@ -56,7 +56,7 @@ class BuildcardReview extends StatelessWidget {
                 children: [
                   Text(
                     'Review by $nameUser ',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    style: const TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                   const SizedBox(width: 8),
                   const Icon(Icons.comment, color: Colors.grey, size: 12.0),
@@ -76,7 +76,7 @@ class BuildcardReview extends StatelessWidget {
                 style: TextStyle(color: constants.white),
                 moreStyle: const TextStyle(
                     color: Colors.purple, fontWeight: FontWeight.bold),
-                lessStyle: TextStyle(
+                lessStyle: const TextStyle(
                     color: Colors.purple, fontWeight: FontWeight.bold),
               )
             ],

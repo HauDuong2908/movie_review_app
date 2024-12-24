@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../Models/Models.dart';
 import '../../widgets/widgets.dart';
-import '../drawer/slideMenu.dart';
 
 class Lists extends StatefulWidget {
   const Lists({super.key});
@@ -16,7 +15,7 @@ class _ListsState extends State<Lists> {
   Widget build(BuildContext context) {
     Constants constants = Constants();
     return Scaffold(
-      drawer: SlideMenu(),
+      // drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Home'),
         leading: IconDrawer(),

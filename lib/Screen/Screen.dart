@@ -5,3 +5,5 @@ export 'Lists/lists.dart';
 export 'Reviews/reviews.dart';
 export 'Watchlist/watchlist.dart';
 export 'home/home_ui/home.dart';
+export 'Nav_bar/navBar.dart';
+export 'User/User.dart';

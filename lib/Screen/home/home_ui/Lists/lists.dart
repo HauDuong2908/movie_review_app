@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_review_app/Router/Router.dart';
+// import 'package:movie_review_app/Router/routeres.dart';
 import '../../main_home.dart';
 
-class Listview_Stack extends StatelessWidget {
-  const Listview_Stack({
+class Lists extends StatelessWidget {
+  const Lists({
     super.key,
   });
 
@@ -22,13 +25,13 @@ class Listview_Stack extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () => context.push(RouterWidget.Reviewpage),
                   child: Container(
                     width: 86,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Buildcard(
+                    child: Listcard(
                       title: movie['title'],
                       author: movie['author'],
                       imagePath: List<String>.from(movie['image']),
