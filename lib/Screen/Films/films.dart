@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../Models/Models.dart';
-import '../../widgets/widgets.dart';
-import '../drawer/slideMenu.dart';
 
 class Films extends StatelessWidget {
   const Films({super.key});
@@ -10,10 +8,11 @@ class Films extends StatelessWidget {
   Widget build(BuildContext context) {
     Constants constans = Constants();
     return Scaffold(
-      drawer: SlideMenu(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         title: Text('Home'),
-        leading: IconDrawer(),
         backgroundColor: constans.black.withOpacity(1),
       ),
       body: const Center(

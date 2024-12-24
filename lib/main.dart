@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_review_app/Router/routeres.dart';
 import 'package:provider/provider.dart';
 
 import 'package:movie_review_app/Firebase/firebase_options.dart';
-import 'package:movie_review_app/Router.dart';
 import 'package:flutter/services.dart';
 
 import '../Provider/Providers.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: RouterWidget.router,
+      routerConfig: router,
     );
   }
 }

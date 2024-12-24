@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../Models/Models.dart';
 import '../../widgets/widgets.dart';
-import '../drawer/slideMenu.dart';
 
 class Likes extends StatefulWidget {
   const Likes({super.key});
@@ -16,7 +15,7 @@ class _LikesState extends State<Likes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SlideMenu(),
+      // drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Home'),
         leading: IconDrawer(),

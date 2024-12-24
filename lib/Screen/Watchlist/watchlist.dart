@@ -16,7 +16,7 @@ class _WatchlistState extends State<Watchlist> {
   Widget build(BuildContext context) {
     Constants constants = Constants();
     return Scaffold(
-      drawer: SlideMenu(),
+      // drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Home'),
         leading: IconDrawer(),

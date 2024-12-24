@@ -7,4 +7,5 @@ class Constants {
   final Color hexadecimal = const Color.fromRGBO(156, 74, 139, 1);
   final Color white = const Color.fromRGBO(255, 255, 255, 1);
   final Color gray = const Color.fromARGB(255, 54, 53, 53);
+  final Color black1 = const Color(0xFF1F1D36);
 }

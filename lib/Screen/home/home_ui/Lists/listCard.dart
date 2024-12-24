@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../Models/Models.dart';
 
-class Buildcard extends StatelessWidget {
-  const Buildcard({
+class Listcard extends StatelessWidget {
+  const Listcard({
     super.key,
     required this.title,
     required this.author,
@@ -80,16 +80,16 @@ class Buildcard extends StatelessWidget {
                 author,
                 style: TextStyle(color: constants.pink, fontSize: 6),
               ),
-              SizedBox(width: 2),
+              const SizedBox(width: 2),
               const Icon(Icons.favorite, color: Colors.red, size: 6),
-              SizedBox(width: 2),
+              const SizedBox(width: 2),
               Text(
                 likes.toString(),
                 style: TextStyle(color: constants.white, fontSize: 4),
               ),
-              SizedBox(width: 2),
+              const SizedBox(width: 2),
               const Icon(Icons.comment, color: Colors.grey, size: 4),
-              SizedBox(width: 1),
+              const SizedBox(width: 1),
               Text(
                 comments.toString(),
                 style: TextStyle(color: constants.white, fontSize: 4),

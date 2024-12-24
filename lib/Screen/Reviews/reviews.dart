@@ -3,20 +3,16 @@ import 'package:flutter/material.dart';
 import '../../Models/Models.dart';
 import '../../widgets/widgets.dart';
 import '../drawer/slideMenu.dart';
+// import '../Nav_bar/navBar.dart';
 
-class Reviews extends StatefulWidget {
+class Reviews extends StatelessWidget {
   const Reviews({super.key});
 
-  @override
-  State<Reviews> createState() => _ReviewsState();
-}
-
-class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
     Constants constants = Constants();
     return Scaffold(
-      drawer: SlideMenu(),
+      drawer: DrawerMenu(),
       appBar: AppBar(
         title: Text('Home'),
         leading: IconDrawer(),
@@ -33,6 +29,8 @@ class _ReviewsState extends State<Reviews> {
           ],
         ),
       ),
+      extendBody: true,
+      // bottomNavigationBar: Navbar(),
     );
   }
 }
